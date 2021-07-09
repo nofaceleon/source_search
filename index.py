@@ -1,10 +1,11 @@
 import time
 from ui.main_ui import Ui_MainWindow
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QHeaderView, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QHeaderView, QTableWidgetItem, QWidget
 from core.moviedl import moviedl
 from PyQt5.QtCore import QObject, pyqtSignal
 from threading import Thread
+from ui.about import Ui_Dialog
 
 
 # 修改ui文件后重新复发布py文件 : pyuic5 -o ./ui/main_ui.py ./ui/main_ui.ui
@@ -14,6 +15,13 @@ from threading import Thread
 # 使用自定义信号去控制页面元素的修改
 class mySignal(QObject):
     btnChange = pyqtSignal(str)  # 自定义信号
+
+
+# 每一个窗口都是一个类文件
+class dialog_w(Ui_Dialog, QWidget):
+    def __init__(self):
+        super(dialog_w, self).__init__()
+        self.setupUi(self)
 
 
 class main(Ui_MainWindow, QMainWindow):
@@ -27,6 +35,12 @@ class main(Ui_MainWindow, QMainWindow):
     def logic(self):
         self.searchBtn.clicked.connect(self.search)  # 监听点击事件
         self.ms.btnChange.connect(self.btn_text_change)  # 监听自定义信号
+        self.actionversion.triggered.connect(self.show_about)
+
+    def show_about(self):
+        # 控制显示, 必须是全局变量才能监听, 否则会闪退
+        dialog.show()
+        # QMessageBox.information(self, '关于', content, QMessageBox.Ok)
 
     # 修改按钮文字
     def btn_text_change(self, text):
@@ -69,4 +83,5 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ui = main()
     ui.show()
+    dialog = dialog_w() # 子窗口只能全局实例化
     sys.exit(app.exec_())
