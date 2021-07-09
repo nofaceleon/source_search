@@ -7,6 +7,10 @@ from PyQt5.QtCore import QObject, pyqtSignal
 from threading import Thread
 
 
+# 修改ui文件后重新复发布py文件 : pyuic5 -o ./ui/main_ui.py ./ui/main_ui.ui
+# 打包exe : pyinstaller -w -F index.py
+
+
 # 使用自定义信号去控制页面元素的修改
 class mySignal(QObject):
     btnChange = pyqtSignal(str)  # 自定义信号
@@ -16,7 +20,7 @@ class main(Ui_MainWindow, QMainWindow):
     def __init__(self):
         super(main, self).__init__()
         self.setupUi(self)
-        self.ms = mySignal() # 实例化自定义信号
+        self.ms = mySignal()  # 实例化自定义信号
         self.logic()
 
     # 业务逻辑

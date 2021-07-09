@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>923</width>
-    <height>523</height>
+    <width>520</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
        <widget class="QTableWidget" name="searchRes">
         <property name="minimumSize">
          <size>
-          <width>900</width>
+          <width>500</width>
           <height>0</height>
          </size>
         </property>
@@ -67,6 +67,13 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>搜索后复制链接地址进入浏览器即可访问</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -75,7 +82,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>923</width>
+     <width>520</width>
      <height>23</height>
     </rect>
    </property>
