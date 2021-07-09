@@ -13,6 +13,7 @@ class moviedl():
             'piaohua': piaohua,
             'subaibai': subaibai,
             'naifei': naifei,
+            'yinfans': yinfans
         }
         return source_tags
 
