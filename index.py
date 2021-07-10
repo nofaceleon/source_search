@@ -59,9 +59,6 @@ class main(Ui_MainWindow, QMainWindow):
     def search(self):
         # 不在主线程中执行这个
         keyword = self.movieName.text()  # 获取关键字
-
-        # 判断搜索类型, 图书还是电影
-
         self.ms.btnChange.emit('搜索中')  # 发送自定义信号
         self.ms.statusBarChange.emit(f"【{keyword}】 正在搜索中....")
 
@@ -73,13 +70,11 @@ class main(Ui_MainWindow, QMainWindow):
             end = time.time()
             total_time = '%.2f' % (end - start)
             self.showResult(data)
-            # self.statusbar.showMessage(f"【{key}】 搜索完成, 共找到{len(data)}条数据, 总耗时{total_time}s")
             self.ms.statusBarChange.emit(f"【{key}】 搜索完成, 共找到 {len(data)} 条数据, 总耗时 {total_time}s")
             self.ms.btnChange.emit('开始搜索')  # 发送自定义信号
 
         task = Thread(target=t_run, args=(keyword,))  # 线程只有一个参数的时候也必须用元组的方式传递参数
         task.start()
-        # task.join()
 
     # 结果展示
     def showResult(self, data):
