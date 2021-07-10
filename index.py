@@ -9,7 +9,7 @@ from ui.about import Ui_Dialog
 
 
 # 修改ui文件后重新复发布py文件 : pyuic5 -o ./ui/main_ui.py ./ui/main_ui.ui
-# 打包exe : pyinstaller -w -F index.py
+# 打包exe : pyinstaller -w -F -i icon.ico index.py
 
 
 # 使用自定义信号去控制页面元素的修改
@@ -19,12 +19,13 @@ class mySignal(QObject):
 
 
 # 每一个窗口都是一个类文件
+# 版本信息窗口
 class dialog_w(Ui_Dialog, QWidget):
     def __init__(self):
         super(dialog_w, self).__init__()
         self.setupUi(self)
 
-
+# 主程序
 class main(Ui_MainWindow, QMainWindow):
     def __init__(self):
         super(main, self).__init__()
@@ -40,6 +41,7 @@ class main(Ui_MainWindow, QMainWindow):
         self.ms.btnChange.connect(self.btn_text_change)  # 监听自定义信号
         self.ms.statusBarChange.connect(self.status_bar_text_change)
 
+    # 显示版本信息页面
     def show_about(self):
         # 控制显示, 必须是全局变量才能监听, 否则会闪退
         dialog.show()
