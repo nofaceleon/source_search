@@ -13,24 +13,25 @@ from ui.about import Ui_Dialog
 
 
 # 使用自定义信号去控制页面元素的修改
-class mySignal(QObject):
+class MySignal(QObject):
     btnChange = pyqtSignal(str)  # 自定义信号
     statusBarChange = pyqtSignal(str)
 
 
 # 每一个窗口都是一个类文件
 # 版本信息窗口
-class dialog_w(Ui_Dialog, QWidget):
+class DialogW(Ui_Dialog, QWidget):
     def __init__(self):
-        super(dialog_w, self).__init__()
+        super(DialogW, self).__init__()
         self.setupUi(self)
 
+
 # 主程序
-class main(Ui_MainWindow, QMainWindow):
+class Main(Ui_MainWindow, QMainWindow):
     def __init__(self):
-        super(main, self).__init__()
+        super(Main, self).__init__()
         self.setupUi(self)
-        self.ms = mySignal()  # 实例化自定义信号
+        self.ms = MySignal()  # 实例化自定义信号
         self.logic()
 
     # 业务逻辑
@@ -69,7 +70,7 @@ class main(Ui_MainWindow, QMainWindow):
             data = md.run(key)
             end = time.time()
             total_time = '%.2f' % (end - start)
-            self.showResult(data)
+            self.show_result(data)
             self.ms.statusBarChange.emit(f"【{key}】 搜索完成, 共找到 {len(data)} 条数据, 总耗时 {total_time}s")
             self.ms.btnChange.emit('开始搜索')  # 发送自定义信号
 
@@ -77,7 +78,7 @@ class main(Ui_MainWindow, QMainWindow):
         task.start()
 
     # 结果展示
-    def showResult(self, data):
+    def show_result(self, data):
         self.searchRes.horizontalHeader().setSectionResizeMode(2, QHeaderView.Interactive)
         self.searchRes.setRowCount(len(data))
         row = 0
@@ -90,7 +91,7 @@ class main(Ui_MainWindow, QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ui = main()  # 主窗口实例化
+    ui = Main()  # 主窗口实例化
     ui.show()  # 主窗口展示
-    dialog = dialog_w()  # 子窗口只能全局实例化
+    dialog = DialogW()  # 子窗口只能全局实例化
     sys.exit(app.exec_())
