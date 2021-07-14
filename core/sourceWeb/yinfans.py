@@ -6,6 +6,7 @@ class yinfans:
 
     def __init__(self):
         self.source = '音范丝'
+        self.sort = 4
         self.base_url = "https://www.yinfans.me/"
         self.search_api = self.base_url + "?s={key}"
         self.headers = {
@@ -34,6 +35,7 @@ class yinfans:
             buffer.append({
                 'source': self.source,
                 'movie_name': i.xpath('./div[@class="article"]/h2/a/@title')[0],
-                'movie_link': i.xpath('./div[@class="article"]/h2/a/@href')[0]
+                'movie_link': i.xpath('./div[@class="article"]/h2/a/@href')[0],
+                'sort': self.sort
             })
         return buffer

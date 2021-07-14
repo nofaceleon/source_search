@@ -6,6 +6,7 @@ class mp4:
 
     def __init__(self):
         self.source = '高清MP4网'
+        self.sort = 99
         # print(f"=====开始搜索: {self.source}=====")
         self.base_url = "http://www.mp4ba.cc/"
         self.search_api = self.base_url + "vod-search-name-{key}.html"
@@ -36,7 +37,8 @@ class mp4:
             buffer.append({
                 'source': self.source,
                 'movie_name': i.xpath('./h4/a/text()')[0],
-                'movie_link': self.base_url + i.xpath('./h4/a/@href')[0].lstrip('/')
+                'movie_link': self.base_url + i.xpath('./h4/a/@href')[0].lstrip('/'),
+                'sort': self.sort
             })
 
         return buffer

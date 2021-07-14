@@ -5,3 +5,4 @@ from .piaohua import piaohua
 from .subaibai import subaibai
 from .naifei import naifei
 from .yinfans import yinfans
+from .mypianku import mypianku

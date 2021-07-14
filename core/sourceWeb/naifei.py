@@ -6,6 +6,7 @@ class naifei:
 
     def __init__(self):
         self.source = '奈菲影视'
+        self.sort = 2
         self.base_url = "https://www.nfmovies.com/"
         self.search_api = self.base_url + "search.php?searchword={key}"
         self.headers = {
@@ -34,6 +35,7 @@ class naifei:
             buffer.append({
                 'source': self.source,
                 'movie_name': i.xpath('./div[@class="detail"]/h4/a/text()')[0],
-                'movie_link': self.base_url + i.xpath('./div[@class="detail"]/h4/a/@href')[0].lstrip('/')
+                'movie_link': self.base_url + i.xpath('./div[@class="detail"]/h4/a/@href')[0].lstrip('/'),
+                'sort': self.sort
             })
         return buffer

@@ -6,6 +6,7 @@ class pianku:
     def __init__(self):
         # print("=====开始搜索片库网=====")
         self.source = '片库网'
+        self.sort = 4
         self.base_url = "http://www.pianku5.com/"
         self.search_api = self.base_url + "index.php?g=home&m=search&a=api&sid=0&limit=10&wd="
         self.headers = {
@@ -34,6 +35,7 @@ class pianku:
                 buffer.append({
                     'source': self.source,
                     'movie_name': i['vod_name'],
-                    'movie_link': self.base_url + i['link'].lstrip('/')
+                    'movie_link': self.base_url + i['link'].lstrip('/'),
+                    'sort': self.sort
                 })
         return buffer

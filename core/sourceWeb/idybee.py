@@ -6,6 +6,7 @@ class idybee():
 
     def __init__(self):
         self.source = '电影蜜蜂'
+        self.sort = 3
         self.search_api = "https://www.idybee.com/?post_type=post&s="
         self.headers = {
             'authority': 'www.idybee.com',
@@ -44,6 +45,7 @@ class idybee():
             buffer.append({
                 'source': self.source,
                 'movie_name': movie_name,
-                'movie_link': movie_link
+                'movie_link': movie_link,
+                'sort':self.sort
             })
         return buffer

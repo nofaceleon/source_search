@@ -6,6 +6,7 @@ class piaohua:
 
     def __init__(self):
         self.source = '飘花电影网'
+        self.sort = 4
         # print(f"=====开始搜索: {self.source}=====")
         self.base_url = "https://www.btberry.com/"
         self.search_api = self.base_url + "vodsearch/-------------.html?wd={key}&submit="
@@ -41,7 +42,8 @@ class piaohua:
             buffer.append({
                 'source': self.source,
                 'movie_name': i.xpath('./div[@class="thumb"]/a/@title')[0],
-                'movie_link': self.base_url + i.xpath('./div[@class="thumb"]/a/@href')[0].lstrip('/')
+                'movie_link': self.base_url + i.xpath('./div[@class="thumb"]/a/@href')[0].lstrip('/'),
+                'sort': self.sort
             })
 
         return buffer

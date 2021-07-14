@@ -6,6 +6,7 @@ class subaibai:
 
     def __init__(self):
         self.source = '素白白影视'
+        self.sort = 4
         self.base_url = "https://www.subaibai.com/"
         self.search_api = self.base_url + "?s={key}"
         self.headers = {
@@ -38,6 +39,7 @@ class subaibai:
             buffer.append({
                 'source': self.source,
                 'movie_name': i.xpath('./h3/a/text()')[0],
-                'movie_link': i.xpath('./h3/a/@href')[0]
+                'movie_link': i.xpath('./h3/a/@href')[0],
+                'sort': self.sort
             })
         return buffer

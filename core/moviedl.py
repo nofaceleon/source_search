@@ -9,11 +9,12 @@ class moviedl():
         source_tags = {
             'pianku': pianku,
             'idybee': idybee,
-            'mp4': mp4,
+            # 'mp4': mp4,
             'piaohua': piaohua,
             'subaibai': subaibai,
             'naifei': naifei,
-            'yinfans': yinfans
+            'yinfans': yinfans,
+            'mypianku': mypianku
         }
         return source_tags
 
@@ -51,4 +52,9 @@ class moviedl():
 
         for i in task_pool:
             i.join()  # 等待所有线程执行完毕
-        return search_result
+        return self.source_sort(search_result)
+
+    # 对数据进行排序
+    def source_sort(self, data):
+        new_data = sorted(data, key=lambda e: e['sort'])
+        return new_data
