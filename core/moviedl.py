@@ -9,7 +9,7 @@ class moviedl():
         source_tags = {
             'pianku': pianku,
             'idybee': idybee,
-            # 'mp4': mp4,
+            'mp4': mp4,
             'piaohua': piaohua,
             'subaibai': subaibai,
             'naifei': naifei,
