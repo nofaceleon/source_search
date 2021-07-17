@@ -68,7 +68,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "影视资源搜索_sjs v1.0"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "影视资源搜索_sjs v1.1"))
         self.searchBtn.setText(_translate("MainWindow", "开始搜索"))
         self.label.setText(_translate("MainWindow", "电影名:"))
         item = self.searchRes.horizontalHeaderItem(0)
